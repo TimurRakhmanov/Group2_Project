@@ -20,7 +20,6 @@ class AccountCreate(CreateView):
 
 class AccountLogin(LoginView):
     template_name = "account_login.html"
-    success_url = reverse_lazy("accounts:create")
 
 
 def logout_view(request):
