@@ -24,3 +24,9 @@ class AccountLogin(LoginView):
 
 def logout_view(request):
     logout(request)
+    return HttpResponseRedirect(redirect_to=reverse_lazy("accounts:login"))
+
+
+class AccountProfile(TemplateView):
+    template_name = "profile.html"  
+    
