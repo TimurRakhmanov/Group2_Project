@@ -1,6 +1,6 @@
 from typing import Any
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 
@@ -33,4 +33,11 @@ def logout_view(request):
 
 class AccountProfile(TemplateView):
     template_name = "profile.html"  
+
+
+class AccountUpdate(UpdateView):
+    model = User
+    fields = ("username", "email",)
+    template_name = "update.html"
+    success_url = reverse_lazy("accounts:profile")
     
