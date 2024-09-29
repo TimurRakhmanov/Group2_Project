@@ -8,6 +8,6 @@ urlpatterns = [
     path("login/", views.AccountLogin.as_view(), name="login"),
     path("logout/", views.logout_view, name="logout"),
     path("profile/", login_required(views.AccountProfile.as_view(), login_url=reverse_lazy("accounts:login")), name="profile"),
-    path("update/<int:pk>", login_required(views.AccountUpdate.as_view()), name="update"),
-    # path("profile/", login_required(views.AccountProfile.as_view(), login_url=reverse_lazy("accounts:login")), name="profile"),
+    path("update/<int:pk>/", login_required(views.AccountUpdate.as_view()), name="update"),
+    path("delete/<int:pk>/", login_required(views.AccountDelete.as_view()), name="delete"),
 ]

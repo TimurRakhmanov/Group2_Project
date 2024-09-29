@@ -1,13 +1,12 @@
 from typing import Any
 from django.shortcuts import render
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 
 from . import forms
@@ -41,3 +40,8 @@ class AccountUpdate(UpdateView):
     template_name = "update.html"
     success_url = reverse_lazy("accounts:profile")
     
+
+class AccountDelete(DeleteView):
+    model = User
+    template_name = "delete.html"
+    success_url = reverse_lazy("accounts:login")

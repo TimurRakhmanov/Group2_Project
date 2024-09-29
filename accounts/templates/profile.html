@@ -19,7 +19,7 @@
     </div>
     <div>
         <a href="{% url 'accounts:update' user.id %}">Edit Account Information</a>
-        <a href="/">Delete Account</a>
+        <a href="{% url 'accounts:delete' user.id %}">Delete Account</a>
     </div>
     <a href="{% url 'accounts:logout' %}">Logout</a>
 </div>
