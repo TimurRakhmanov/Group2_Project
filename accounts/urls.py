@@ -1,4 +1,5 @@
-from django.urls import path
+from django.urls import path, reverse_lazy
+from django.contrib.auth.decorators import login_required
 from . import views
 
 app_name = "accounts"
