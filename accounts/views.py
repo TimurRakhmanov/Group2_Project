@@ -17,12 +17,13 @@ from . import forms
 class AccountCreate(CreateView):
     model = User
     form_class = forms.UserCreationCustomForm
-    template_name = "account_create.html"
+    template_name = "create.html"
     success_url = reverse_lazy("accounts:login")
 
 
 class AccountLogin(LoginView):
-    template_name = "account_login.html"
+    template_name = "login.html"
+    success_url = reverse_lazy("accounts:profile")
 
 
 def logout_view(request):
