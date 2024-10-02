@@ -38,7 +38,7 @@ li {
     flex-direction: column;
     align-items: center;
     row-gap: 1.5vh;
-    padding-top: 10vh;
+    padding-top: 5vh;
   }
   .control > form input {
     border: none;
@@ -47,25 +47,24 @@ li {
     border-radius: 10px;
     width: 90%;
     padding: 2%;
+    text-align: center;
   }
   .control > form p {
     width: 80%;
-    color: rgb(191, 0, 0);
+    text-decoration: underline;
+    font-weight: 600;
   }
   .control > form [type=submit] {
     background-color: rgb(191, 0, 0);
     color: white;
     font-weight: 600;
-    margin-top: 2vh;
+    width: 94%;
     height: 4vh;
   }
   .control > form [type=submit]:hover {
     color: rgb(191, 0, 0);
     background-color: white;
     border: 1px solid rgb(191, 0, 0);
-  }
-  .control > form label, .control > form span, .control > form br {
-    display: none;
   }
   .control a {
     color: rgb(245, 150, 0);
@@ -91,7 +90,6 @@ li {
   }
   .profile aside {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
   }
@@ -128,5 +126,49 @@ li {
   }
   .profile > div a:hover {
     text-decoration: underline;
+  }
+}
+@media (min-width: 1000px) {
+  header {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1000px) {
+  .control > h2 {
+    font-size: 28px;
+  }
+  .control > form {
+    width: 40%;
+  }
+  .control > form input {
+    font-size: 20px;
+  }
+  .control > form [type=submit] {
+    height: 6vh;
+  }
+  .control > form p {
+    width: 70%;
+  }
+}
+@media (min-width: 1000px) {
+  .profile > h2 {
+    font-size: 28px;
+  }
+  .profile > section {
+    width: 40%;
+    font-size: 24px;
+  }
+  .profile .profile_date {
+    flex-direction: row;
+  }
+  .profile > a {
+    width: 40%;
+    font-size: 24px;
+  }
+  .profile > div {
+    width: 40%;
+    justify-content: center;
+    -moz-column-gap: 8vh;
+         column-gap: 8vh;
   }
 }
