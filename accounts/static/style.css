@@ -1,7 +1,6 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Quicksand", sans-serif;
 }
 
 html {
@@ -23,17 +22,17 @@ li {
   }
 }
 @media (min-width: 300px) {
-  .sign {
+  .control {
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 2vh;
     padding-top: 15vh;
   }
-  .sign > h2 {
+  .control > h2 {
     font-size: 24px;
   }
-  .sign > form {
+  .control > form {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -41,7 +40,7 @@ li {
     row-gap: 1.5vh;
     padding-top: 10vh;
   }
-  .sign > form input {
+  .control > form input {
     border: none;
     background-color: rgb(245, 245, 245);
     height: 3vh;
@@ -49,25 +48,85 @@ li {
     width: 90%;
     padding: 2%;
   }
-  .sign > form [type=submit] {
+  .control > form p {
+    width: 80%;
+    color: rgb(191, 0, 0);
+  }
+  .control > form [type=submit] {
     background-color: rgb(191, 0, 0);
     color: white;
     font-weight: 600;
     margin-top: 2vh;
     height: 4vh;
   }
-  .sign > form [type=submit]:hover {
+  .control > form [type=submit]:hover {
     color: rgb(191, 0, 0);
     background-color: white;
     border: 1px solid rgb(191, 0, 0);
   }
-  .sign > form label, .sign > form span, .sign > form br {
+  .control > form label, .control > form span, .control > form br {
     display: none;
   }
-  .sign a {
+  .control a {
     color: rgb(245, 150, 0);
   }
-  .sign a:hover {
+  .control a:hover {
     text-decoration: underline;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+@media (min-width: 300px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 4vh;
+    padding-top: 15vh;
+  }
+  .profile > section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    padding-top: 5vh;
+    width: 75%;
+  }
+  .profile aside {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .profile .profile_date {
+    flex-direction: column;
+  }
+  .profile .profile_date strong {
+    justify-self: end;
+    align-self: flex-end;
+  }
+  .profile > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(245, 150, 0);
+    color: white;
+    width: 60%;
+    height: 4vh;
+    border-radius: 10px;
+    padding: 1%;
+  }
+  .profile > a:hover {
+    background-color: white;
+    border: 1px solid rgb(245, 150, 0);
+    color: rgb(245, 150, 0);
+  }
+  .profile > div {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+  }
+  .profile > div a {
+    color: rgb(191, 0, 0);
+  }
+  .profile > div a:hover {
+    text-decoration: underline;
+  }
+}

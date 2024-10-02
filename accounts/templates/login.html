@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<div class="sign">
+<div class="control">
     <h2>Login</h2>
     <form method="POST">
         {% csrf_token %} {{ form }}
-        <a href="{% url 'accounts:create' %}">Sign Up</a>
+        <a href="{% url 'accounts:create' %}">control Up</a>
         <input type="submit" value="Login" />
     </form>
     <p>
