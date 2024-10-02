@@ -23,17 +23,17 @@ li {
   }
 }
 @media (min-width: 300px) {
-  .create {
+  .sign {
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 2vh;
     padding-top: 15vh;
   }
-  .create > h2 {
+  .sign > h2 {
     font-size: 24px;
   }
-  .create > form {
+  .sign > form {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@ li {
     row-gap: 1.5vh;
     padding-top: 10vh;
   }
-  .create > form input {
+  .sign > form input {
     border: none;
     background-color: rgb(245, 245, 245);
     height: 3vh;
@@ -49,25 +49,25 @@ li {
     width: 90%;
     padding: 2%;
   }
-  .create > form [type=submit] {
+  .sign > form [type=submit] {
     background-color: rgb(191, 0, 0);
     color: white;
     font-weight: 600;
-    margin-top: 1vh;
+    margin-top: 2vh;
     height: 4vh;
   }
-  .create > form [type=submit]:hover {
+  .sign > form [type=submit]:hover {
     color: rgb(191, 0, 0);
     background-color: white;
     border: 1px solid rgb(191, 0, 0);
   }
-  .create > form label, .create > form span, .create > form br {
+  .sign > form label, .sign > form span, .sign > form br {
     display: none;
   }
-  .create > form a {
+  .sign a {
     color: rgb(245, 150, 0);
   }
-  .create > form a:hover {
+  .sign a:hover {
     text-decoration: underline;
   }
 }/*# sourceMappingURL=style.css.map */

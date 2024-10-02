@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% block title %}Create a New Account{% endblock %}
 {% block content %}
-<div class="create">
+<div class="sign">
     <h2>Create a New Account</h2>
     <form method='POST'>
         {% csrf_token %} {{ form }}
         <input type='submit' value='Create Account' />
-        <p>
-            Already have an account?
-            <a href="{% url 'accounts:login' %}">Click here</a>
-        </p>
     </form>
+    <p>
+        Already have an account?
+        <a href="{% url 'accounts:login' %}">Click here</a>
+    </p>
 </div>
 <script>
-    console.log($('[type="text"]').attr("placeholder", "Username"));
-    console.log($('[type="email"]').attr("placeholder", "Email"));
-    console.log($('[type="password"]').eq(0).attr("placeholder", "Password"));
-    console.log($('[type="password"]').eq(1).attr("placeholder", "Password (Confirmation)"));
+    $('[type="text"]').attr("placeholder", "Username");
+    $('[type="email"]').attr("placeholder", "Email");
+    $('[type="password"]').eq(0).attr("placeholder", "Password");
+    $('[type="password"]').eq(1).attr("placeholder", "Password (Confirmation)");
 </script>
 {% endblock %}
