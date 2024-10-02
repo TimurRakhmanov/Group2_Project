@@ -1,0 +1,47 @@
+@media (min-width: $mobileScreen){
+    .create {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2vh;
+        padding-top: 15vh;
+
+        > h2 {
+            font-size: 24px;
+        }
+
+        > form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 1.5vh;
+            padding-top: 10vh;
+
+            input {
+                border: none;
+                background-color: $grey;
+                height: 3vh;
+                border-radius: 10px;
+                width: 90%;
+                padding: 2%;
+            }
+
+            [type=submit] {
+                background-color: $red;
+                color: white;
+                font-weight: 600;
+                margin-top: 1vh;
+                height: 4vh;
+            }
+
+            label, span, br {
+                display: none;
+            }
+
+            a {
+                color: $orange;
+            }
+        }
+    }
+}
