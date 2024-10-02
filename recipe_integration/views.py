@@ -25,6 +25,10 @@ def recipe_fetch(request, recipe_id):
     materials = soup.find_all(class_="recipe_material__item_name")
     # materials.find_all(class_="recipe_material__item_name")
     categories = [material.a for material in materials]
+    # number_of_people per serving 
+    # name of the dish
+    headings_2 = soup.find_all(class_="contents_title")
+    servings = str(headings_2[0].contents).replace("['", "").replace("']", "")
     ingridients = []
     for ingr in materials:
         if ingr is not None:
@@ -32,6 +36,6 @@ def recipe_fetch(request, recipe_id):
                 # ing_line = ingr[1]
                 ingr = ingr.a
             ingridients.append(str(ingr.contents).replace("['", "").replace("']", "").replace('★', ""))
-    return render(request, "ingridients.html", context={"ingridients": ingridients})
+    return render(request, "ingridients.html", context={"ingridients": ingridients, "serving": servings})
 
     
