@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+@media (min-width: 300px) {
+  header {
+    color: rgb(191, 0, 0);
+    padding: 2%;
+  }
+}/*# sourceMappingURL=style.css.map */
