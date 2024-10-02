@@ -33,6 +33,11 @@
                 font-weight: 600;
                 margin-top: 1vh;
                 height: 4vh;
+                &:hover {
+                    color: $red;
+                    background-color: white;
+                    border: 1px solid $red;
+                }
             }
 
             label, span, br {
@@ -41,6 +46,9 @@
 
             a {
                 color: $orange;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }

@@ -56,10 +56,18 @@ li {
     margin-top: 1vh;
     height: 4vh;
   }
+  .create > form [type=submit]:hover {
+    color: rgb(191, 0, 0);
+    background-color: white;
+    border: 1px solid rgb(191, 0, 0);
+  }
   .create > form label, .create > form span, .create > form br {
     display: none;
   }
   .create > form a {
     color: rgb(245, 150, 0);
+  }
+  .create > form a:hover {
+    text-decoration: underline;
   }
 }/*# sourceMappingURL=style.css.map */
