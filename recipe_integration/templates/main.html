@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Ingridients Page{% endblock %}
+
+{% block content %} 
+<div class="search-bar">
+    <form action="http://127.0.0.1:8000/integration/recipe/" method="POST" >
+        <h2>Enter the recipe ID: </h2>
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="Get Ingridients">
+        </form>
+</div>
+{% endblock %}

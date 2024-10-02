@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Ingridients Page{% endblock %}
+
+{% block content %} 
+<div>
+    <ul>
+        {% for ingridient in ingridients %}
+            <li>{{ ingridient }}</li>
+        {% endfor %}
+        
+    </ul>
+</div>
+{% endblock %}
