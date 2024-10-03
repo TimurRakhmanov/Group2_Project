@@ -21,11 +21,11 @@ import os
 #     return ingridients, servings
 
 
-def get_ingridients(recipe_id):
+def get_ingredients(recipe_id):
     with open(os.path.join("./recipe_integration/static/samples/", f"{recipe_id}.json"), mode="r") as f:
         json_data = f.read()
     data = json.loads(json_data)
-    return data["Ingridients"], data["Servings"]
+    return data["Ingredients"], data["Servings"]
 
 def get_result(item_name):
     fname = os.path.join("./recipe_integration/static/samples/", f"{item_name}.json")
