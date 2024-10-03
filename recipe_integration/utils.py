@@ -24,6 +24,7 @@ def get_api_response(item_name, recipe_id, save=False):
             with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
                 json.dump(result, f)
         except FileNotFoundError:
+            print("Creating the folder for local cache...")
             os.mkdir(f"./recipe_integration/static/samples/api_responses/{recipe_id}/")
             with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
                 json.dump(result, f)
@@ -66,6 +67,7 @@ def get_result(item_name, item_amount, recipe_id, local_cache=False):
                 "product_name": item_name,
                 "product_amount": item_amount,
                 "img": item["Item"]["smallImageUrls"][0]["imageUrl"],
+                "mediumImg": item["Item"]["mediumImageUrls"][0]["imageUrl"],
                 "name": item["Item"]["itemName"],
                 "price": item["Item"]["itemPrice"],
                 "url": item["Item"]["itemUrl"],
