@@ -7,12 +7,12 @@
         > .fixed {
             background-color: $orange;
             color: white;
-            // border: 1px solid $orange;
             position: fixed;
             width: 16vh;
             text-align: center;
             padding: 2%;
             align-self: flex-end;
+            font-size: 16px;
         }
 
         >h2 {
@@ -24,24 +24,7 @@
             width: 85%;
             font-weight: 600;
             padding-top: 2vh;
-        }
-
-        .menu_container {
-            width: 40%;
-            align-items: flex-end;
-            border: 1px solid red;
-        }
-
-        .hamburger {
-            cursor: pointer;
-        }
-        
-        .menu {
-            display: none;
-            background-color: $grey;
-            font-size: 16px;
-        }
-  
+        }  
 
         > ul {
             width: 85%;
@@ -53,7 +36,7 @@
                 column-gap: 1vh;
             }
             
-            button {
+            .controlDisplay {
                 display: flex;
                 align-items: center;
                 background-color: transparent;
@@ -72,8 +55,44 @@
         section {
             display: flex;
             flex-direction: column;
-            row-gap: 2vh;
+            align-items: flex-end;
             padding-bottom: 5vh;
+        }
+
+        .menu_container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid red;
+        }
+        
+        .hamburger {
+            align-self: flex-end;
+            text-align: center;
+            color: white;
+            background-color: $orange;
+            border: none;
+            width: 20vw;
+            padding: 2%;
+        }
+        
+        .menu {
+            display: none;
+            background-color: $grey;
+            width: 20vw;
+            
+            button { 
+                color: white;
+                background-color: $orange;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 14px;
+                border: none;
+                border-top: 1px solid white;
+                width: 100%;
+                padding: 2%;
+            }
         }
 
         figure {
@@ -81,6 +100,7 @@
             justify-content: center;
             align-items: center;
             column-gap: 3vh;
+            height: 12vh;
         }
 
         img {

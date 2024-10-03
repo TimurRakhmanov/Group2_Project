@@ -184,6 +184,7 @@ li {
     text-align: center;
     padding: 2%;
     align-self: flex-end;
+    font-size: 16px;
   }
   .ingredient > h2 {
     width: 80%;
@@ -195,19 +196,6 @@ li {
     font-weight: 600;
     padding-top: 2vh;
   }
-  .ingredient .menu_container {
-    width: 40%;
-    align-items: flex-end;
-    border: 1px solid red;
-  }
-  .ingredient .hamburger {
-    cursor: pointer;
-  }
-  .ingredient .menu {
-    display: none;
-    background-color: rgb(245, 245, 245);
-    font-size: 16px;
-  }
   .ingredient > ul {
     width: 85%;
   }
@@ -218,7 +206,7 @@ li {
     -moz-column-gap: 1vh;
          column-gap: 1vh;
   }
-  .ingredient > ul button {
+  .ingredient > ul .controlDisplay {
     display: flex;
     align-items: center;
     background-color: transparent;
@@ -234,8 +222,40 @@ li {
   .ingredient section {
     display: flex;
     flex-direction: column;
-    row-gap: 2vh;
+    align-items: flex-end;
     padding-bottom: 5vh;
+  }
+  .ingredient .menu_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+  }
+  .ingredient .hamburger {
+    align-self: flex-end;
+    text-align: center;
+    color: white;
+    background-color: rgb(245, 150, 0);
+    border: none;
+    width: 20vw;
+    padding: 2%;
+  }
+  .ingredient .menu {
+    display: none;
+    background-color: rgb(245, 245, 245);
+    width: 20vw;
+  }
+  .ingredient .menu button {
+    color: white;
+    background-color: rgb(245, 150, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border: none;
+    border-top: 1px solid white;
+    width: 100%;
+    padding: 2%;
   }
   .ingredient figure {
     display: flex;
@@ -243,6 +263,7 @@ li {
     align-items: center;
     -moz-column-gap: 3vh;
          column-gap: 3vh;
+    height: 12vh;
   }
   .ingredient img {
     width: 10vh;

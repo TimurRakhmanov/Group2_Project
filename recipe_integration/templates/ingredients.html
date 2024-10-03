@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="ingredient">
-    <h4 class="fixed">合計金額 : <strong class="estimation"></strong></h4>
+    <h3 class="fixed">合計金額 : <strong class="estimation"></strong></h3>
     <h2>{{ name }}</h2>
     <h4>{{ serving }}</h4>
     {% regroup fetch_data by product_name as result_list %}
@@ -15,20 +15,18 @@
                 <li> {{ product_name.grouper }}: {{ product_name.list.0.product_amount }}</li>
             </aside>
             <section class="hide">
-                <div class="menu_containter">
-                    <div class="hamburger">
-                        ソート
-                    </div>
+                <blockquote class="menu_containter">
+                    <button class="hamburger">ソート ▽</button>
                     <nav class="menu">
                         <button class="priceUp">値段↑</button>
                         <button class="priceDown">値段↓</button>
                         <button class="starUp">評価↑</button>
                         <button class="starDown">評価↓</button>
                     </nav>
-                </div>
+                </blockquote>
                 {% for result in product_name.list %}
                 <figure>
-                    <img src={{ result.img }}>
+                    <img src={{ result.mediumImg }}>
                     <figcaption>
                         <a href={{ result.url }}>{{ result.name }}</a>
                         <aside>
@@ -46,16 +44,23 @@
 </div>
 <script>
     $('.controlDisplay').click((e)=>{
-        $(e.target).parent().next().toggle();
         if($(e.target).text() == "+"){
             $(e.target).text("-");
+            $(e.target).parent().next().css("display", "flex")
         }else{
             $(e.target).text("+");
+            $(e.target).parent().next().css("display", "none")
         }
     })
 
-    $('.hamburger').on('click', function() {
+    $('.hamburger').on('click', function(e){
         $('.menu').slideToggle();
+        let triangle = $(e.target).text().slice(-1);
+        if(triangle == "▽"){
+            $(e.target).text("ソート △");
+        }else{
+            $(e.target).text("ソート ▽");
+        }
     });
 
     $('.priceUp').click((e)=>{
@@ -64,6 +69,7 @@
         let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let price = priceTag.eq(i).text().slice(0, -1);
+            figureTags.eq(i).removeClass();
             figureTags.eq(i).addClass(price);
         }
         figureTags.sort(function(a,b){
@@ -80,6 +86,7 @@
         let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let price = priceTag.eq(i).text().slice(0, -1);
+            figureTags.eq(i).removeClass();
             figureTags.eq(i).addClass(price);
         }
         figureTags.sort(function(a,b){
@@ -95,12 +102,13 @@
         let menu = $(e.target.parentElement.parentElement)
         let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
-            let star = starTag.eq(i).text().slice(0, -1);
+            let star = starTag.eq(i).text().slice(1);
+            figureTags.eq(i).removeClass();
             figureTags.eq(i).addClass(star);
         }
         figureTags.sort(function(a,b){
-            var figureA = parseInt($(a).attr('class').match(/\d+/));
-            var figureB = parseInt($(b).attr('class').match(/\d+/));
+            var figureA = $(a).attr('class');
+            var figureB = $(b).attr('class');
             return figureA - figureB;
         })
         menu.after(figureTags);
@@ -111,12 +119,13 @@
         let menu = $(e.target.parentElement.parentElement)
         let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
-            let star = starTag.eq(i).text().slice(0, -1);
+            let star = starTag.eq(i).text().slice(1);
+            figureTags.eq(i).removeClass();
             figureTags.eq(i).addClass(star);
         }
         figureTags.sort(function(a,b){
-            var figureA = parseInt($(a).attr('class').match(/\d+/));
-            var figureB = parseInt($(b).attr('class').match(/\d+/));
+            var figureA = $(a).attr('class');
+            var figureB = $(b).attr('class');
             return figureB - figureA;
         })
         menu.after(figureTags);
