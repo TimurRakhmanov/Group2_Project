@@ -32,7 +32,7 @@ def get_result(item_name):
     data = api_result.json()
     items = data["Items"]
     main_info = []
-    for item in items:
+    for item in items[:10]:
         main_info.append(
             {
                 "product_name": item_name,
