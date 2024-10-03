@@ -1,8 +1,11 @@
 from bs4 import BeautifulSoup
 import json
 import os
+import requests
 
+from dotenv import load_dotenv
 
+load_dotenv()
 # def parse_html(recipe_id):
 #     html_raw = open(os.path.join("./recipe_integration/static/samples/", f"{recipe_id}.html"))
 #     html_doc = html_raw.read()
@@ -20,6 +23,11 @@ import os
 #             ingridients.append(str(ingr.contents).replace("['", "").replace("']", "").replace('★', ""))
 #     return ingridients, servings
 
+def api_get_items(item_name):
+    request_url = """https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601/"""
+    result = requests.get(request_url, params={"format": "json", "keyword": item_name, "applicationId": os.getenv("APP_ID")})
+    return result
+
 
 def get_ingredients(recipe_id):
     with open(os.path.join("./recipe_integration/static/samples/", f"{recipe_id}.json"), mode="r") as f:
@@ -28,13 +36,9 @@ def get_ingredients(recipe_id):
     return data["Ingredients"], data["Servings"]
 
 def get_result(item_name):
-    fname = os.path.join("./recipe_integration/static/samples/", f"{item_name}.json")
-    with open(fname, mode="r") as f:
-        json_file = f.read()
-    data = json.loads(json_file)
+    api_result = api_get_items(item_name)
+    data = api_result.json()
     items = data["Items"]
-    # item_name = data["Items"][0]["Item"]["itemName"]
-    # print(items[0]["Item"]["smallImageUrls"][0])
     main_info = []
     for item in items:
         main_info.append(
@@ -47,15 +51,4 @@ def get_result(item_name):
 
             }
         )
-    # imgs = [img["Item"]["mediumImageUrls"][0]["imageUrl"] for img in items]
-    # names = [item["Item"]["itemName"] for item in items]
-    # prices = [item["Item"]["itemPrice"] for item in items]
-    # urls = [item["Item"]["itemUrl"] for item in items]
-    # main_info = {
-    #     "product_name": item_name,
-    #     "imgs": imgs,
-    #     "names": names,
-    #     "prices": prices, 
-    #     "urls": urls,
-    # }
     return main_info
