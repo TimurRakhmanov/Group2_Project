@@ -1,0 +1,23 @@
+@media (min-width: $desktopScreen){
+    .profile {
+        >h2 {
+            font-size: 28px;
+        }
+        > section {
+            width: 40%;
+            font-size: 24px;
+        }
+        .profile_date {
+            flex-direction: row;
+        }
+        > a {
+            width: 40%;
+            font-size: 24px;
+        }
+        > div {
+            width: 40%;
+            justify-content: center;
+            column-gap: 8vh;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+@media (min-width: $mobileScreen){
+    .control {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2vh;
+        padding-top: 15vh;
+
+        > h2 {
+            font-size: 24px;
+        }
+
+        > form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 1.5vh;
+            padding-top: 5vh;
+
+            input {
+                border: none;
+                background-color: $grey;
+                height: 3vh;
+                border-radius: 10px;
+                width: 90%;
+                padding: 2%;
+                text-align: center;
+            }
+
+            p {
+                width: 80%;
+                text-decoration: underline;
+                font-weight: 600;
+            }
+
+            [type=submit] {
+                background-color: $red;
+                color: white;
+                font-weight: 600;
+                width: 94%;
+                height: 4vh;
+                &:hover {
+                    color: $red;
+                    background-color: white;
+                    border: 1px solid $red;
+                }
+            }
+
+        }
+        
+        a {
+            color: $orange;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

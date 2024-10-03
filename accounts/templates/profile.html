@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Profile{% endblock %}
 {% block content %}
-<div class="main">
-    <h2>Your Account:</h2>
-    <div class="account_detaisl">
-        <table>
-            <tr>
-                <th>Username</th>
-                <th>Email Address</th>
-                <th>Registration Date</th>
-            </tr>
-            <tr>
-                <td>{{user.username}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.date_joined}}</td>
-            </tr>
-        </table>
-    </div>
+<div class="profile">
+    <h2>Account Page</h2>
+    <section>
+        <aside>
+            <p>Username:</p>
+            <strong>{{user.username}}</strong>
+        </aside>
+        <aside>
+            <p>Email:</p>
+            <strong>{{user.email}}</strong>
+        </aside>
+        <aside class="profile_date">
+            <p>Registered at:</p>
+            <strong>{{user.date_joined}}</strong>
+        </aside>
+    </section>
+    <a href="{% url 'accounts:update' user.id %}">Update Profile</a>
     <div>
-        <a href="{% url 'accounts:update' user.id %}">Edit Account Information</a>
+        <a href="{% url 'accounts:logout' %}">Logout</a>
         <a href="{% url 'accounts:delete' user.id %}">Delete Account</a>
     </div>
-    <a href="{% url 'accounts:logout' %}">Logout</a>
 </div>
 {% endblock %}
