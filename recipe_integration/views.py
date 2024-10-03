@@ -16,6 +16,6 @@ def main(request):
 
 def recipe_fetch(request, recipe_id):
     ingridients, servings = utils.parse_html(recipe_id)
-    return render(request, "ingridients.html", context={"ingridients": ingridients, "serving": servings})
-
-    
+    data = utils.get_result("pork")
+    items = data["Items"]
+    return render(request, "ingridients.html", context={"ingridients": ingridients, "serving": servings,})

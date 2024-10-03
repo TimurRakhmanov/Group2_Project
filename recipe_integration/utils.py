@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-
+import json
 import os
 
 
@@ -19,3 +19,10 @@ def parse_html(recipe_id):
                 ingr = ingr.a
             ingridients.append(str(ingr.contents).replace("['", "").replace("']", "").replace('★', ""))
     return ingridients, servings
+
+def get_result(item_name):
+    json_file = open(os.path.join("./recipe_integration/static/samples/", f"{item_name}.json"))
+    data = json_file.read()
+    json_file.close()
+    data = json.loads(data)
+    return data

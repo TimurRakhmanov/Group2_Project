@@ -7,6 +7,9 @@
     <ul>
         {% for ingridient in ingridients %}
             <li>{{ ingridient }}</li>
+            {% for item in pork %}
+            <li>{{ item }}</li>
+            {% endblock %}
         {% endfor %}
         
     </ul>
