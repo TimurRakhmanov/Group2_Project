@@ -1,15 +1,14 @@
-from bs4 import BeautifulSoup
 import json
 import os
 import requests
-
+import time
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def get_api_response(item_name, recipe_id, save=False):
     request_url = """https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601/"""
-    result = requests.get(request_url, params={
+    params={
         "format": "json", 
         "keyword": item_name, 
         "applicationId": os.getenv("APP_ID"),
@@ -17,7 +16,19 @@ def get_api_response(item_name, recipe_id, save=False):
         "imageFlag": 1,
         "appointDeliveryDateFlag": 1,
         "elements": "smallImageUrls,mediumImageUrls,itemName,itemPrice,itemUrl,reviewAverage"
-        })
+    }
+    for i in range(20):
+        t1 = time.time()
+        result = requests.get(request_url, params=params)
+        t2 = time.time()
+        delta = t2 - t1
+        if params.get("elements") is not None:
+            with open(f"./recipe_integration/profiling/short/{recipe_id}.txt", mode="a") as f:
+                f.writelines(f"{i}, {item_name}, {delta}\n")
+        else:
+            with open(f"./recipe_integration/profiling/full/{recipe_id}.txt", mode="a") as f:
+                f.writelines(f"{i}, {item_name}, {delta}\n")
+        time.sleep(3)
     result = result.json()
     if save:
         try:
