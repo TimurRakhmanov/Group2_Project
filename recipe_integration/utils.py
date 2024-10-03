@@ -16,6 +16,7 @@ def api_get_items(item_name):
         "availability": 1,
         "imageFlag": 1,
         "appointDeliveryDateFlag": 1,
+        "elements": "smallImageUrls,mediumImageUrls,itemName,itemPrice,itemUrl"
         })
     return result
 

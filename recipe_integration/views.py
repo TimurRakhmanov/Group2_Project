@@ -15,11 +15,13 @@ def main(request):
 
 
 def recipe_fetch(request, recipe_id):
+    import time
     ingredients, servings = utils.get_ingredients(recipe_id)
     api_data = []
     # imgs, names, prices, urls = [], [], [], 
     for ingredient in ingredients:
         data = utils.get_result(ingredient)
+        time.sleep(0.18)
         api_data.extend(data)
     # fetch_data = {ingredient: result for (ingredient, result) in zip(ingredients[:2], api_data)}
     fetch_data = api_data
