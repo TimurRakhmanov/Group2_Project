@@ -18,7 +18,7 @@ def recipe_fetch(request, recipe_id):
     ingredients, servings = utils.get_ingredients(recipe_id)
     api_data = []
     # imgs, names, prices, urls = [], [], [], 
-    for ingridient in ingredients[:2]:
+    for ingridient in ingredients:
         data = utils.get_result(ingridient)
         api_data.extend(data)
     # fetch_data = {ingridient: result for (ingridient, result) in zip(ingredients[:2], api_data)}
