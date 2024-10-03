@@ -20,8 +20,13 @@ def get_api_response(item_name, recipe_id, save=False):
         })
     result = result.json()
     if save:
-        with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
-            json.dump(result, f)
+        try:
+            with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
+                json.dump(result, f)
+        except FileNotFoundError:
+            os.mkdir(f"./recipe_integration/static/samples/api_responses/{recipe_id}/")
+            with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
+                json.dump(result, f)
     return result
 
 
