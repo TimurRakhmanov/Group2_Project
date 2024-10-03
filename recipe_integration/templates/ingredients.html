@@ -9,15 +9,20 @@
     <ul>
         {% for product_name in result_list %}
             <hr>
-            <li> {{ product_name.grouper }}</li>
+            <aside>
+                <button class="controlDisplay">+</button>
+                <li> {{ product_name.grouper }}</li>
+            </aside>
             <section>
                 {% for result in product_name.list %}
                 <figure>
                     <img src={{ result.img }}>
                     <figcaption>
                         <a href={{ result.url }}>{{ result.name }}</a>
-                        <p>{{ result.price }}円</p>
-                        <p>{{ result.score }}</p>
+                        <aside>
+                            <p>{{ result.price }}円</p>
+                            <p>☆{{ result.score }}</p>
+                        </aside>
                     </figcaption>
                 </figure>
                 {% endfor %}
@@ -26,4 +31,10 @@
         <hr>
     </ul>
 </div>
+<script>
+    $('.controlDisplay').click((e)=>{
+        let list = e.target.parentNode.nextSibling;
+        console.log(list)
+    })
+</script>
 {% endblock %}

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -174,13 +175,41 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 2vh;
+    padding-top: 5vh;
   }
   .ingredient > h4 {
     width: 85%;
+    font-weight: 600;
+    padding-top: 2vh;
   }
   .ingredient > ul {
     width: 85%;
+  }
+  .ingredient > ul > aside {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    -moz-column-gap: 1vh;
+         column-gap: 1vh;
+  }
+  .ingredient > ul button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    height: 4vh;
+  }
+  .ingredient > ul li {
+    display: flex;
+    align-items: center;
+    height: 4vh;
+  }
+  .ingredient section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+    padding: 3vh 0 5vh 0;
   }
   .ingredient figure {
     display: flex;
@@ -192,19 +221,36 @@ li {
   .ingredient img {
     width: 10vh;
     height: 10vh;
+    border-radius: 10px;
+    border: 2px double black;
   }
   .ingredient figcaption {
     display: flex;
     flex-direction: column;
     align-items: center;
+    row-gap: 1vh;
     width: 60%;
-    border: 1px solid red;
   }
   .ingredient figcaption > a {
     width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    display: -webkit-box; /* Flexboxの代わりに使う */
+    -webkit-box-orient: vertical; /* 垂直方向に表示 */
+    -webkit-line-clamp: 2; /* 2行まで表示 */
+    overflow: hidden; /* オーバーフローを隠す */
+    text-overflow: ellipsis; /* 省略記号を追加 */
+    white-space: normal; /* 複数行で表示可能に */
+    color: black;
+    text-decoration: underline;
+    font-size: 12px;
+  }
+  .ingredient figcaption > aside {
+    display: flex;
+    justify-content: center;
+    -moz-column-gap: 3vh;
+         column-gap: 3vh;
+    color: rgb(245, 150, 0);
+    font-size: 14px;
+    font-weight: 600;
   }
 }
 @media (min-width: 1000px) {

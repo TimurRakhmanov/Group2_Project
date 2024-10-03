@@ -3,14 +3,45 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        row-gap: 2vh;
+        padding-top: 5vh;
 
         > h4 {
             width: 85%;
+            font-weight: 600;
+            padding-top: 2vh;
         }
 
         > ul {
             width: 85%;
+
+            > aside {
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                column-gap: 1vh;
+            }
+            
+            button {
+                display: flex;
+                align-items: center;
+                background-color: transparent;
+                border: none;
+                font-size: 24px;
+                height: 4vh;
+            }
+
+            li {
+                display: flex;
+                align-items: center;
+                height: 4vh;
+            }
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            row-gap: 2vh;
+            padding: 3vh 0 5vh 0;
         }
 
         figure {
@@ -23,20 +54,37 @@
         img {
             width: 10vh;
             height: 10vh;
+            border-radius: 10px;
+            border: 2px double black;
         }
 
         figcaption {
             display: flex;
             flex-direction: column;
             align-items: center;
+            row-gap: 1vh;
             width: 60%;
-            border: 1px solid red;
 
             > a {
                 width: 100%;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
+                display: -webkit-box; /* Flexboxの代わりに使う */
+                -webkit-box-orient: vertical; /* 垂直方向に表示 */
+                -webkit-line-clamp: 2; /* 2行まで表示 */
+                overflow: hidden; /* オーバーフローを隠す */
+                text-overflow: ellipsis; /* 省略記号を追加 */
+                white-space: normal; /* 複数行で表示可能に */
+                color: black;
+                text-decoration: underline;
+                font-size: 12px;
+            }
+
+            > aside {
+                display: flex;
+                justify-content: center;
+                column-gap: 3vh;
+                color: $orange;
+                font-size: 14px;
+                font-weight: 600;
             }
         }
     }
