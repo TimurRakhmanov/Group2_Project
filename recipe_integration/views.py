@@ -16,13 +16,11 @@ def main(request):
 
 def recipe_fetch(request, recipe_id):
     import time
-    ingredients, servings = utils.get_ingredients(recipe_id)
+    name, servings, ingredients, amount = utils.get_ingredients(recipe_id)
     api_data = []
-    # imgs, names, prices, urls = [], [], [], 
-    for ingredient in ingredients:
-        data = utils.get_result(ingredient)
-        time.sleep(0.2)
+    ingredients = {ingredient: amount for (ingredient, amount) in zip(ingredients, amount)}
+    for ingredient, amount in ingredients.items():
+        data = utils.get_result(ingredient, amount, recipe_id)
+        time.sleep(2)
         api_data.extend(data)
-    # fetch_data = {ingredient: result for (ingredient, result) in zip(ingredients[:2], api_data)}
-    fetch_data = api_data
-    return render(request, "ingredients.html", context={"fetch_data": fetch_data, "serving": servings})
+    return render(request, "ingredients.html", context={"fetch_data": api_data, "serving": servings, "name": name,})

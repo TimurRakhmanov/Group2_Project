@@ -3,11 +3,12 @@
 
 {% block content %} 
 <div>
+    {{ name }}
     {{ serving }}
     {% regroup fetch_data by product_name as result_list %}
     <ul>
         {% for product_name in result_list %}
-            <li> {{ product_name.grouper }}</li>
+            <li> {{ product_name.grouper }}: {{ product_name.list.0.product_amount }}</li>
             <ul>
                 {% for result in product_name.list %}
                     <li><a href={{ result.url }}>{{ result.name }}</a> </li>
