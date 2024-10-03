@@ -1,10 +1,14 @@
+{% extends 'base.html' %}
 {% block title %}Account Deletion {% endblock %}
 {% block content %}
-<h2>Confirmation</h2>
-<form method='POST'>
-    {% csrf_token %}  
-    <p>Are you sure you want to delete your account?<p>
-    {{ form.as_p }}
-    <input type='submit' value='Delete Account'>
-</form>
+<div class="control">
+    <h2>Confirmation</h2>
+    <form method='POST'>
+        {% csrf_token %}  
+        <p>Are you sure you want to delete your account?</p>
+        {{ form }}
+        <input type='submit' value='Delete Account'>
+    </form>
+    <a href="{% url 'accounts:profile' %}">No, go back</a>
+</div>
 {% endblock %}
