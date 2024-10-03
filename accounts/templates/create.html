@@ -1,9 +1,24 @@
 {% extends 'base.html' %}
 {% block title %}Create a New Account{% endblock %}
 {% block content %}
-<h2>Create a New Account<h2/>
-<form method='POST'>
-    {% csrf_token %} {{ form }}
-    <input type='submit' value='Create Account' />
-</form>
+<div class="control">
+    <h2>Create a New Account</h2>
+    <form method='POST'>
+        {% csrf_token %} {{ form }}
+        <input type='submit' value='Create Account' />
+    </form>
+    <p>
+        Already have an account?
+        <a href="{% url 'accounts:login' %}">Click here</a>
+    </p>
+</div>
+<script>
+    $('[type="text"]').attr("placeholder", "Username");
+    $('[type="email"]').attr("placeholder", "Email");
+    $('[type="password"]').eq(0).attr("placeholder", "Password");
+    $('[type="password"]').eq(1).attr("placeholder", "Password (Confirmation)");
+    $('label').hide();
+    $('span').hide();
+    $('br').hide();
+</script>
 {% endblock %}

@@ -1,8 +1,18 @@
+{% extends 'base.html' %}
 {% block title %}Update Accout Information{% endblock %}
 {% block content %}
-<form method='POST'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type='submit' value='Update'>
-</form>
+<div class="control">
+    <h2>Update Account</h2>
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form }}
+        <input type='submit' value='Update'>
+    </form>
+    <a href="{% url 'accounts:profile' %}">Cancel</a>
+</div>
+<script>
+    $('label').hide();
+    $('span').hide();
+    $('br').hide();
+</script>
 {% endblock %}
