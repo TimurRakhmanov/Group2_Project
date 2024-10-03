@@ -3,17 +3,45 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 5vh;
+
+        > .fixed {
+            background-color: $orange;
+            color: white;
+            // border: 1px solid $orange;
+            position: fixed;
+            width: 16vh;
+            text-align: center;
+            padding: 2%;
+            align-self: flex-end;
+        }
 
         >h2 {
             width: 80%;
             font-size: 20px;
+            padding-top: 5vh;
         }
         > h4 {
             width: 85%;
             font-weight: 600;
             padding-top: 2vh;
         }
+
+        .menu_container {
+            width: 40%;
+            align-items: flex-end;
+            border: 1px solid red;
+        }
+
+        .hamburger {
+            cursor: pointer;
+        }
+        
+        .menu {
+            display: none;
+            background-color: $grey;
+            font-size: 16px;
+        }
+  
 
         > ul {
             width: 85%;
@@ -45,7 +73,7 @@
             display: flex;
             flex-direction: column;
             row-gap: 2vh;
-            padding: 3vh 0 5vh 0;
+            padding-bottom: 5vh;
         }
 
         figure {

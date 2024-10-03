@@ -175,16 +175,38 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 5vh;
+  }
+  .ingredient > .fixed {
+    background-color: rgb(245, 150, 0);
+    color: white;
+    position: fixed;
+    width: 16vh;
+    text-align: center;
+    padding: 2%;
+    align-self: flex-end;
   }
   .ingredient > h2 {
     width: 80%;
     font-size: 20px;
+    padding-top: 5vh;
   }
   .ingredient > h4 {
     width: 85%;
     font-weight: 600;
     padding-top: 2vh;
+  }
+  .ingredient .menu_container {
+    width: 40%;
+    align-items: flex-end;
+    border: 1px solid red;
+  }
+  .ingredient .hamburger {
+    cursor: pointer;
+  }
+  .ingredient .menu {
+    display: none;
+    background-color: rgb(245, 245, 245);
+    font-size: 16px;
   }
   .ingredient > ul {
     width: 85%;
@@ -213,7 +235,7 @@ li {
     display: flex;
     flex-direction: column;
     row-gap: 2vh;
-    padding: 3vh 0 5vh 0;
+    padding-bottom: 5vh;
   }
   .ingredient figure {
     display: flex;

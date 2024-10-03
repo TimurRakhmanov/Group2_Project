@@ -3,9 +3,9 @@
 
 {% block content %}
 <div class="ingredient">
+    <h4 class="fixed">合計金額 : <strong class="estimation"></strong></h4>
     <h2>{{ name }}</h2>
     <h4>{{ serving }}</h4>
-    <h4>合計金額 : <strong class="estimation"></strong></h4>
     {% regroup fetch_data by product_name as result_list %}
     <ul>
         {% for product_name in result_list %}
@@ -15,15 +15,19 @@
                 <li> {{ product_name.grouper }}: {{ product_name.list.0.product_amount }}</li>
             </aside>
             <section class="hide">
-                <nav>
-                    <button class="priceUp">値段↑</button>
-                    <button class="priceDown">値段↓</button>
-                    <button class="starUp">評価↑</button>
-                    <button class="starDown">評価↓</button>
-                </nav>
+                <div class="menu_containter">
+                    <div class="hamburger">
+                        ソート
+                    </div>
+                    <nav class="menu">
+                        <button class="priceUp">値段↑</button>
+                        <button class="priceDown">値段↓</button>
+                        <button class="starUp">評価↑</button>
+                        <button class="starDown">評価↓</button>
+                    </nav>
+                </div>
                 {% for result in product_name.list %}
                 <figure>
-                    <button class="checkbox"></button>
                     <img src={{ result.img }}>
                     <figcaption>
                         <a href={{ result.url }}>{{ result.name }}</a>
@@ -32,6 +36,7 @@
                             <p class="star">☆{{ result.score }}</p>
                         </aside>
                     </figcaption>
+                    <button class="checkbox"></button>
                 </figure>
                 {% endfor %}
             </section>
@@ -41,14 +46,22 @@
 </div>
 <script>
     $('.controlDisplay').click((e)=>{
-        let list = e.target.parentNode.nextElementSibling;
-        list.classList.toggle("hide");
+        $(e.target).parent().next().toggle();
+        if($(e.target).text() == "+"){
+            $(e.target).text("-");
+        }else{
+            $(e.target).text("+");
+        }
     })
 
+    $('.hamburger').on('click', function() {
+        $('.menu').slideToggle();
+    });
+
     $('.priceUp').click((e)=>{
-        let priceTag = $(e.target.parentElement.parentElement).find('.price');
-        let nav = $(e.target.parentElement)
-        let figureTags = $(e.target.parentElement.parentElement).find('figure');
+        let priceTag = $(e.target.parentElement.parentElement.parentElement).find('.price');
+        let menu = $(e.target.parentElement.parentElement)
+        let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let price = priceTag.eq(i).text().slice(0, -1);
             figureTags.eq(i).addClass(price);
@@ -58,13 +71,13 @@
             var figureB = parseInt($(b).attr('class').match(/\d+/));
             return figureA - figureB;
         })
-        nav.after(figureTags);
+        menu.after(figureTags);
     })
-
+    
     $('.priceDown').click((e)=>{
-        let priceTag = $(e.target.parentElement.parentElement).find('.price');
-        let nav = $(e.target.parentElement)
-        let figureTags = $(e.target.parentElement.parentElement).find('figure');
+        let priceTag = $(e.target.parentElement.parentElement.parentElement).find('.price');
+        let menu = $(e.target.parentElement.parentElement)
+        let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let price = priceTag.eq(i).text().slice(0, -1);
             figureTags.eq(i).addClass(price);
@@ -74,13 +87,13 @@
             var figureB = parseInt($(b).attr('class').match(/\d+/));
             return figureB - figureA;
         })
-        nav.after(figureTags);
+        menu.after(figureTags);
     })
     
     $('.starUp').click((e)=>{
-        let starTag = $(e.target.parentElement.parentElement).find('.star');
-        let nav = $(e.target.parentElement)
-        let figureTags = $(e.target.parentElement.parentElement).find('figure');
+        let starTag = $(e.target.parentElement.parentElement.parentElement).find('.star');
+        let menu = $(e.target.parentElement.parentElement)
+        let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let star = starTag.eq(i).text().slice(0, -1);
             figureTags.eq(i).addClass(star);
@@ -90,13 +103,13 @@
             var figureB = parseInt($(b).attr('class').match(/\d+/));
             return figureA - figureB;
         })
-        nav.after(figureTags);
+        menu.after(figureTags);
     })
 
     $('.starDown').click((e)=>{
-        let starTag = $(e.target.parentElement.parentElement).find('.star');
-        let nav = $(e.target.parentElement)
-        let figureTags = $(e.target.parentElement.parentElement).find('figure');
+        let starTag = $(e.target.parentElement.parentElement.parentElement).find('.star');
+        let menu = $(e.target.parentElement.parentElement)
+        let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let star = starTag.eq(i).text().slice(0, -1);
             figureTags.eq(i).addClass(star);
@@ -106,9 +119,8 @@
             var figureB = parseInt($(b).attr('class').match(/\d+/));
             return figureB - figureA;
         })
-        nav.after(figureTags);
+        menu.after(figureTags);
     })
-
     let totalPrice = 0;
     $(".estimation").text(totalPrice);
     $('.checkbox').click((e)=>{
