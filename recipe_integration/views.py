@@ -22,7 +22,7 @@ def recipe_fetch(request, recipe_id):
     # imgs, names, prices, urls = [], [], [], 
     for ingredient in ingredients:
         data = utils.get_result(ingredient)
-        time.sleep(0.18)
+        time.sleep(0.2)
         api_data.extend(data)
     # fetch_data = {ingredient: result for (ingredient, result) in zip(ingredients[:2], api_data)}
     fetch_data = api_data
