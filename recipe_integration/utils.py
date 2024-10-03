@@ -6,26 +6,17 @@ import requests
 from dotenv import load_dotenv
 
 load_dotenv()
-# def parse_html(recipe_id):
-#     html_raw = open(os.path.join("./recipe_integration/static/samples/", f"{recipe_id}.html"))
-#     html_doc = html_raw.read()
-#     html_raw.close()
-#     soup = BeautifulSoup(html_doc, "html.parser")
-#     materials = soup.find_all(class_="recipe_material__item_name")
-#     # categories = [material.a for material in materials]
-#     headings_2 = soup.find_all(class_="contents_title")
-#     servings = str(headings_2[0].contents).replace("['", "").replace("']", "")
-#     ingridients = []
-#     for ingr in materials:
-#         if ingr is not None:
-#             if len(ingr) > 1:
-#                 ingr = ingr.a
-#             ingridients.append(str(ingr.contents).replace("['", "").replace("']", "").replace('★', ""))
-#     return ingridients, servings
 
 def api_get_items(item_name):
     request_url = """https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601/"""
-    result = requests.get(request_url, params={"format": "json", "keyword": item_name, "applicationId": os.getenv("APP_ID")})
+    result = requests.get(request_url, params={
+        "format": "json", 
+        "keyword": item_name, 
+        "applicationId": os.getenv("APP_ID"),
+        "availability": 1,
+        "imageFlag": 1,
+        "appointDeliveryDateFlag": 1,
+        })
     return result
 
 

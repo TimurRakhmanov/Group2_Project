@@ -18,9 +18,9 @@ def recipe_fetch(request, recipe_id):
     ingredients, servings = utils.get_ingredients(recipe_id)
     api_data = []
     # imgs, names, prices, urls = [], [], [], 
-    for ingridient in ingredients:
-        data = utils.get_result(ingridient)
+    for ingredient in ingredients:
+        data = utils.get_result(ingredient)
         api_data.extend(data)
-    # fetch_data = {ingridient: result for (ingridient, result) in zip(ingredients[:2], api_data)}
+    # fetch_data = {ingredient: result for (ingredient, result) in zip(ingredients[:2], api_data)}
     fetch_data = api_data
     return render(request, "ingredients.html", context={"fetch_data": fetch_data, "serving": servings})
