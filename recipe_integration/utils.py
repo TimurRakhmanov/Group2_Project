@@ -16,7 +16,7 @@ def api_get_items(item_name):
         "availability": 1,
         "imageFlag": 1,
         "appointDeliveryDateFlag": 1,
-        "elements": "smallImageUrls,mediumImageUrls,itemName,itemPrice,itemUrl"
+        "elements": "smallImageUrls,mediumImageUrls,itemName,itemPrice,itemUrl,reviewAverage"
         })
     return result
 
@@ -40,7 +40,7 @@ def get_result(item_name):
                 "name": item["Item"]["itemName"],
                 "price": item["Item"]["itemPrice"],
                 "url": item["Item"]["itemUrl"],
-
+                "score": item["Item"]["reviewAverage"],
             }
         )
     return main_info
