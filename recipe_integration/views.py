@@ -7,11 +7,11 @@ from . import forms, utils
 
 def main(request):
     if request.method == "POST":
-        form = forms.RecipeFeatchForm(request.POST)
+        form = forms.RecipeFetchForm(request.POST)
         if form.is_valid():
             return HttpResponseRedirect(f"fetch/{form.cleaned_data['recipe_id']}")
     else:
-        form = forms.RecipeFeatchForm()
+        form = forms.RecipeFetchForm()
         return render(request, "main.html", {"form": form})
 
 
