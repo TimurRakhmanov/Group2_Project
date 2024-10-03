@@ -65,6 +65,7 @@ def get_result(item_name, item_amount, recipe_id, local_cache=False):
                 "product_name": item_name,
                 "product_amount": item_amount,
                 "img": item["Item"]["smallImageUrls"][0]["imageUrl"],
+                "mediumImg": item["Item"]["mediumImageUrls"][0]["imageUrl"],
                 "name": item["Item"]["itemName"],
                 "price": item["Item"]["itemPrice"],
                 "url": item["Item"]["itemUrl"],
