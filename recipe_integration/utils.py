@@ -44,7 +44,7 @@ def get_result(item_name):
         main_info.append(
             {
                 "product_name": item_name,
-                "img": item["Item"]["mediumImageUrls"][0]["imageUrl"],
+                "img": item["Item"]["smallImageUrls"][0]["imageUrl"],
                 "name": item["Item"]["itemName"],
                 "price": item["Item"]["itemPrice"],
                 "url": item["Item"]["itemUrl"],
