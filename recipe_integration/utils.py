@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def save_api_response(item_name, recipe_id):
+def get_api_response(item_name, recipe_id, save=False):
     request_url = """https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601/"""
     result = requests.get(request_url, params={
         "format": "json", 
@@ -19,11 +19,13 @@ def save_api_response(item_name, recipe_id):
         "elements": "smallImageUrls,mediumImageUrls,itemName,itemPrice,itemUrl,reviewAverage"
         })
     result = result.json()
-    with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
-        json.dump(result, f)
+    if save:
+        with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
+            json.dump(result, f)
+    return result
 
 
-def get_api_response(item_name, recipe_id):
+def get_saved_api_response(recipe_id, item_name):
     with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="r") as f:
         data = json.loads(f.read())
     return data
@@ -36,10 +38,21 @@ def get_ingredients(recipe_id):
     data = json.loads(json_data)
     return data["Name"], data["Servings"], data["Ingredients"], data["Amount"]
 
-def get_result(item_name, item_amount, recipe_id):
-    # save_api_response(item_name, recipe_id)
-    api_result = get_api_response(item_name, recipe_id)
-    data = api_result
+
+def get_result(item_name, item_amount, recipe_id, local_cache=False):
+    import time
+    data = None
+    if local_cache:
+        try:
+            data = get_saved_api_response(item_name=item_name, recipe_id=recipe_id)
+            print(data)
+        except BaseException as e:
+            print(e)
+            print("No local cache found... Getting the data from API...")
+            time.sleep(3)
+            data = get_api_response(item_name=item_name, recipe_id=recipe_id, save=True)
+    else:
+        data = get_api_response(item_name=item_name, recipe_id=recipe_id, save=False)
     items = data["Items"]
     main_info = []
     for item in items[:10]:
