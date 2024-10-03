@@ -8,6 +8,12 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 a {
   text-decoration: none;
 }
@@ -219,7 +225,7 @@ li {
     align-items: center;
     height: 4vh;
   }
-  .ingredient section {
+  .ingredient > ul > section {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -373,5 +379,10 @@ li {
   }
   .search-bar > form p {
     width: 70%;
+  }
+}
+@media (min-width: 1000px) {
+  .ingredient {
+    width: 60%;
   }
 }

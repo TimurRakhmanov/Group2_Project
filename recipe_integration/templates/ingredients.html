@@ -24,19 +24,21 @@
                         <button class="starDown">評価↓</button>
                     </nav>
                 </blockquote>
-                {% for result in product_name.list %}
-                <figure>
-                    <img src={{ result.mediumImg }}>
-                    <figcaption>
-                        <a href={{ result.url }}>{{ result.name }}</a>
-                        <aside>
-                            <p class="price">{{ result.price }}円</p>
-                            <p class="star">☆{{ result.score }}</p>
-                        </aside>
-                    </figcaption>
-                    <button class="checkbox"></button>
-                </figure>
-                {% endfor %}
+                <section>
+                    {% for result in product_name.list %}
+                    <figure>
+                        <img src={{ result.mediumImg }}>
+                        <figcaption>
+                            <a href={{ result.url }}>{{ result.name }}</a>
+                            <aside>
+                                <p class="price">{{ result.price }}円</p>
+                                <p class="star">☆{{ result.score }}</p>
+                            </aside>
+                        </figcaption>
+                        <button class="checkbox"></button>
+                    </figure>
+                    {% endfor %}
+                </section>
             </section>
         {% endfor %}
         <hr>
@@ -65,7 +67,7 @@
 
     $('.priceUp').click((e)=>{
         let priceTag = $(e.target.parentElement.parentElement.parentElement).find('.price');
-        let menu = $(e.target.parentElement.parentElement)
+        let section = $(e.target.parentElement.parentElement).next();
         let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let price = priceTag.eq(i).text().slice(0, -1);
@@ -77,12 +79,12 @@
             var figureB = parseInt($(b).attr('class').match(/\d+/));
             return figureA - figureB;
         })
-        menu.after(figureTags);
+        section.html(figureTags);
     })
     
     $('.priceDown').click((e)=>{
         let priceTag = $(e.target.parentElement.parentElement.parentElement).find('.price');
-        let menu = $(e.target.parentElement.parentElement)
+        let section = $(e.target.parentElement.parentElement).next();
         let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let price = priceTag.eq(i).text().slice(0, -1);
@@ -94,12 +96,12 @@
             var figureB = parseInt($(b).attr('class').match(/\d+/));
             return figureB - figureA;
         })
-        menu.after(figureTags);
+        section.html(figureTags);
     })
     
     $('.starUp').click((e)=>{
         let starTag = $(e.target.parentElement.parentElement.parentElement).find('.star');
-        let menu = $(e.target.parentElement.parentElement)
+        let section = $(e.target.parentElement.parentElement).next();
         let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let star = starTag.eq(i).text().slice(1);
@@ -111,12 +113,12 @@
             var figureB = $(b).attr('class');
             return figureA - figureB;
         })
-        menu.after(figureTags);
+        section.html(figureTags);
     })
 
     $('.starDown').click((e)=>{
         let starTag = $(e.target.parentElement.parentElement.parentElement).find('.star');
-        let menu = $(e.target.parentElement.parentElement)
+        let section = $(e.target.parentElement.parentElement).next();
         let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
         for(let i = 0; i < 10; i++){
             let star = starTag.eq(i).text().slice(1);
@@ -128,7 +130,7 @@
             var figureB = $(b).attr('class');
             return figureB - figureA;
         })
-        menu.after(figureTags);
+        section.html(figureTags);
     })
     let totalPrice = 0;
     $(".estimation").text(totalPrice);

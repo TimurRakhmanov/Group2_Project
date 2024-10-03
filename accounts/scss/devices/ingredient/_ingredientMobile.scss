@@ -50,13 +50,17 @@
                 align-items: center;
                 height: 4vh;
             }
-        }
 
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            padding-bottom: 5vh;
+            > section {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                padding-bottom: 5vh;
+
+                section {
+                    
+                }
+            }
         }
 
         .menu_container {
