@@ -4,7 +4,7 @@ import os
 
 
 # def parse_html(recipe_id):
-#     html_raw = open(os.path.join("./recipe_integration/static/samples/", f"{recipe_id}.html"))
+#     html_raw = open(os.path.join(".{os.path.sep}recipe_integration{os.path.sep}static{os.path.sep}samples{os.path.sep}", f"{recipe_id}.html"))
 #     html_doc = html_raw.read()
 #     html_raw.close()
 #     soup = BeautifulSoup(html_doc, "html.parser")
@@ -22,14 +22,14 @@ import os
 
 
 def get_ingredients(recipe_id):
-    with open(os.path.join("./recipe_integration/static/samples/", f"{recipe_id}.json"), mode="r") as f:
+    with open(os.path.join(f".{os.path.sep}recipe_integration{os.path.sep}static{os.path.sep}samples{os.path.sep}", f"{recipe_id}.json"), mode="r", encoding="utf-8_sig") as f:
         json_data = f.read()
     data = json.loads(json_data)
     return data["Ingredients"], data["Servings"]
 
 def get_result(item_name):
-    fname = os.path.join("./recipe_integration/static/samples/", f"{item_name}.json")
-    with open(fname, mode="r") as f:
+    fname = os.path.join(f".{os.path.sep}recipe_integration{os.path.sep}static{os.path.sep}samples{os.path.sep}", f"{item_name}.json")
+    with open(fname, mode="r", encoding="utf-8_sig") as f:
         json_file = f.read()
     data = json.loads(json_file)
     items = data["Items"]

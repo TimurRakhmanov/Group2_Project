@@ -1,0 +1,43 @@
+@media (min-width: $mobileScreen){
+    .ingredient {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2vh;
+
+        > h4 {
+            width: 85%;
+        }
+
+        > ul {
+            width: 85%;
+        }
+
+        figure {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 3vh;
+        }
+
+        img {
+            width: 10vh;
+            height: 10vh;
+        }
+
+        figcaption {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+            border: 1px solid red;
+
+            > a {
+                width: 100%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+}

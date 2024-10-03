@@ -2,20 +2,27 @@
 {% block title %}Ingridients Page{% endblock %}
 
 {% block content %} 
-<div>
-    {{ serving }}
+<div class="ingredient">
+    <h2>Recipe Name</h2>
+    <h4>{{ serving }}</h4>
     {% regroup fetch_data by product_name as result_list %}
     <ul>
         {% for product_name in result_list %}
+            <hr>
             <li> {{ product_name.grouper }}</li>
-            <ul>
+            <section>
                 {% for result in product_name.list %}
-                    <li><a href={{ result.url }}>{{ result.name }}</a> </li>
-                    <li> <img src={{ result.img }}> </li>
-                    <li>{{ result.price }}円</li>
+                <figure>
+                    <img src={{ result.img }}>
+                    <figcaption>
+                        <a href={{ result.url }}>{{ result.name }}</a>
+                        <p>{{ result.price }}円</p>
+                    </figcaption>
+                </figure>
                 {% endfor %}
-            </ul>
+            </section>
         {% endfor %}
+        <hr>
     </ul>
 </div>
 {% endblock %}
