@@ -10,7 +10,7 @@ def main(request):
         if form.is_valid():
             return HttpResponseRedirect(f"fetch/{form.cleaned_data['recipe_id']}")
     else:
-        form = forms.RecipeFeatchForm()
+        form = forms.RecipeFetchForm()
         return render(request, "main.html", {"form": form})
 
 
