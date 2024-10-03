@@ -1,12 +1,32 @@
 from django.test import TestCase
 from . import forms, utils
+from accounts import models
 import os
 
 
 class Test(TestCase):
     def test_main(self):
-        response = self.client.get("http://127.0.0.1:8000/integration/recipe/")
-        self.assertEquals(response.status_code, 200)
+        valid_user = {
+            "username": "Test",
+            "email": "test@gmail.com",
+            "password": "test@1232#1",
+        }
+
+        invalid_user = {
+            "username": "s",
+            "email": "test@gmail.com",
+            "password": "test@#1",
+        }
+        
+        users = [valid_user, invalid_user]
+        expected_status_codes = [200, 302]
+        models.User.objects.create_user(**valid_user)
+
+        for idx, user in enumerate(users):
+            self.client.login(**user)
+            response = self.client.get("http://127.0.0.1:8000/integration/recipe/")
+            self.assertEquals(response.status_code, expected_status_codes[idx])
+            self.client.logout()
 
     def test_RecipeFetchForm(self):
         invalid_data_samples = [
