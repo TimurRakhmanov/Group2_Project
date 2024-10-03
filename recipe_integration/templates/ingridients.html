@@ -4,14 +4,18 @@
 {% block content %} 
 <div>
     {{ serving }}
+    {% regroup fetch_data by product_name as result_list %}
     <ul>
-        {% for ingridient in ingridients %}
-            <li>{{ ingridient }}</li>
-            {% for item in pork %}
-            <li>{{ item }}</li>
-            {% endblock %}
+        {% for product_name in result_list %}
+            <li> {{ product_name.grouper }}</li>
+            <ul>
+                {% for result in product_name.list %}
+                    <li><a href={{ result.url }}>{{ result.name }}</a> </li>
+                    <li> <img src={{ result.img }}> </li>
+                    <li>{{ result.price }}円</li>
+                {% endfor %}
+            </ul>
         {% endfor %}
-        
     </ul>
 </div>
 {% endblock %}
