@@ -1,5 +1,51 @@
 @media (min-width: $desktopScreen){
     .ingredient {
-        width: 60%;
+        width: 80%;
+        padding-left: 10%;
+
+        >.fixed {
+            padding: 1%;
+            font-size: 20px;
+        }
+
+        > h2 {
+            font-size: 28px;
+        }
+
+        > h4 {
+            font-size: 24px;
+        }
+
+        > ul {
+            width: 85%;
+
+            > aside {
+                column-gap: 2vh;
+                font-size: 20px;
+            }
+            
+            .controlDisplay {
+                font-size: 28px;
+            }
+
+            li {
+                display: flex;
+                align-items: center;
+                height: 4vh;
+            }
+
+            > section {
+                > section {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    padding-top: 2vh;
+                }
+            }
+
+            figure {
+                width: 30%;
+            }
+        }
     }
 }
