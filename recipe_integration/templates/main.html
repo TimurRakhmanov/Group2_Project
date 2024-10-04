@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}Ingridients Page{% endblock %}
-
 {% block content %} 
 <div class="search-bar">
+    <h2>Enter the recipe ID: </h2>
     <form action="http://127.0.0.1:8000/integration/recipe/" method="POST" >
-        <h2>Enter the recipe ID: </h2>
-        {% csrf_token %} {{ form.as_p }}
+        {% csrf_token %} {{ form }}
         <input type="submit" value="Get Ingridients">
-        </form>
+    </form>
 </div>
+<script>
+    $('[type="text"]').attr("placeholder", "Type Recipe ID here");
+    $('label').hide();
+</script>
 {% endblock %}

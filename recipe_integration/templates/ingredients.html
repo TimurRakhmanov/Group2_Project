@@ -11,12 +11,17 @@
             <li> {{ product_name.grouper }}: {{ product_name.list.0.product_amount }}</li>
             <ul>
                 {% for result in product_name.list %}
-                    <li><a href={{ result.url }}>{{ result.name }}</a> </li>
-                    <li> <img src={{ result.img }}> </li>
-                    <li>{{ result.price }}円</li>
+                <figure>
+                    <img src={{ result.img }}>
+                    <figcaption>
+                        <a href={{ result.url }}>{{ result.name }}</a>
+                        <p>{{ result.price }}円</p>
+                    </figcaption>
+                </figure>
                 {% endfor %}
-            </ul>
+            </section>
         {% endfor %}
+        <hr>
     </ul>
 </div>
 {% endblock %}

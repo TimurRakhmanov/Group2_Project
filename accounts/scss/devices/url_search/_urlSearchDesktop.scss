@@ -1,0 +1,19 @@
+@media (min-width: $desktopScreen){
+    .search-bar {
+        > h2 {
+            font-size: 28px;
+        }
+        > form {
+            width: 40%;
+            input {
+                font-size: 20px;
+            }
+            [type="submit"]{
+                height: 6vh;
+            }
+            p {
+                width: 70%;
+            }
+        }
+    }
+}
