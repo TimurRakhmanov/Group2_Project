@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Ingridients Page{% endblock %}
 {% block content %} 
+
 <div class="search-bar">
     <h2>Enter the recipe ID: </h2>
     <form action="http://127.0.0.1:8000/integration/recipe/" method="POST" >
@@ -8,6 +9,9 @@
         <input type="submit" value="Get Ingridients">
     </form>
 </div>
+<div class="profile">
+    <a href="{% url 'accounts:profile'%}">Go To Your Profile</a>
+    </div>
 <script>
     $('[type="text"]').attr("placeholder", "Type Recipe ID here");
     $('label').hide();
