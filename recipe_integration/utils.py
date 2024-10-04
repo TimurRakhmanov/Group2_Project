@@ -61,7 +61,6 @@ def get_result(item_name, item_amount, recipe_id, local_cache=False):
     if local_cache:
         try:
             data = get_saved_api_response(item_name=item_name, recipe_id=recipe_id)
-            print(data)
         except BaseException as e:
             print(e)
             print("No local cache found... Getting the data from API...")
