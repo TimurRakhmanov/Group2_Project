@@ -17,6 +17,12 @@
             align-items: center;
             row-gap: 1.5vh;
             padding-top: 5vh;
+            
+            > div {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
 
             input {
                 border: none;

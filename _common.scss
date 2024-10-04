@@ -1,10 +1,5 @@
-//Google Font
-// @import url(https://fonts.googleapis.com/css2?family=Playfair:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap);
-// $font           : "Playfair", sans-serif;
-
 // Screen
 $mobileScreen: 300px;
-// $tabletScreen   :   700px;
 $desktopScreen: 1000px;
 
 //Color
@@ -16,7 +11,6 @@ $grey: rgb(245,245,245);
 * {
     padding: 0;
     margin: 0;
-    // font-family: 'Quicksand', sans-serif;
 }
 
 //Other common style
@@ -24,11 +18,11 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+// body {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+// }
 
 a {
     text-decoration: none;
