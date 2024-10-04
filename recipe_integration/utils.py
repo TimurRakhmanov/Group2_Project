@@ -49,7 +49,8 @@ def get_saved_api_response(recipe_id, item_name):
 
 
 def get_ingredients(recipe_id):
-    with open(os.path.join("./recipe_integration/static/samples/recipes/", f"{recipe_id}.json"), mode="r") as f:
+    with open(os.path.join(f".{os.path.sep}recipe_integration{os.path.sep}static{os.path.sep}samples{os.path.sep}recipes{os.path.sep}", f"{recipe_id}.json"), mode="r", encoding="utf-8_sig") as f:
+
         json_data = f.read()
     data = json.loads(json_data)
     return data["Name"], data["Servings"], data["Ingredients"], data["Amount"]

@@ -3,14 +3,96 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        row-gap: 2vh;
 
+        > .fixed {
+            background-color: $orange;
+            color: white;
+            position: fixed;
+            width: 16vh;
+            text-align: center;
+            padding: 2%;
+            align-self: flex-end;
+            font-size: 16px;
+        }
+
+        >h2 {
+            width: 80%;
+            font-size: 20px;
+            padding-top: 5vh;
+        }
         > h4 {
             width: 85%;
-        }
+            font-weight: 600;
+            padding-top: 2vh;
+        }  
 
         > ul {
             width: 85%;
+
+            > aside {
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                column-gap: 1vh;
+            }
+            
+            .controlDisplay {
+                display: flex;
+                align-items: center;
+                background-color: transparent;
+                border: none;
+                font-size: 24px;
+                height: 4vh;
+            }
+
+            li {
+                display: flex;
+                align-items: center;
+                height: 4vh;
+            }
+
+            > section {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                padding-bottom: 5vh;
+            }
+        }
+
+        .menu_container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid red;
+        }
+        
+        .hamburger {
+            align-self: flex-end;
+            text-align: center;
+            color: white;
+            background-color: $orange;
+            border: none;
+            width: 20vw;
+            padding: 2%;
+        }
+        
+        .menu {
+            display: none;
+            background-color: $grey;
+            width: 20vw;
+            
+            button { 
+                color: white;
+                background-color: $orange;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 14px;
+                border: none;
+                border-top: 1px solid white;
+                width: 100%;
+                padding: 2%;
+            }
         }
 
         figure {
@@ -18,26 +100,60 @@
             justify-content: center;
             align-items: center;
             column-gap: 3vh;
+            height: 12vh;
         }
 
         img {
             width: 10vh;
             height: 10vh;
+            border-radius: 10px;
+            border: 2px double black;
         }
 
         figcaption {
             display: flex;
             flex-direction: column;
             align-items: center;
+            row-gap: 1vh;
             width: 60%;
-            border: 1px solid red;
 
             > a {
                 width: 100%;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
+                display: -webkit-box; /* Flexboxの代わりに使う */
+                -webkit-box-orient: vertical; /* 垂直方向に表示 */
+                -webkit-line-clamp: 2; /* 2行まで表示 */
+                overflow: hidden; /* オーバーフローを隠す */
+                text-overflow: ellipsis; /* 省略記号を追加 */
+                white-space: normal; /* 複数行で表示可能に */
+                color: black;
+                text-decoration: underline;
+                font-size: 12px;
             }
+
+            > aside {
+                display: flex;
+                justify-content: center;
+                column-gap: 3vh;
+                color: $orange;
+                font-size: 14px;
+                font-weight: 600;
+            }
+        }
+
+        .checkbox {
+            border: 2px solid $grey;
+            border-radius: 100%;
+            height: 2vh;
+            width: 2vh;
+            background-color: $grey;
+            outline: 1px solid black;
+        }
+        .selected {
+            background-color: black;
+        }
+
+        .hide {
+            display: none;
         }
     }
 }

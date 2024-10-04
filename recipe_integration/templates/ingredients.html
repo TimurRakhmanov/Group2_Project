@@ -1,27 +1,148 @@
 {% extends 'base.html' %}
 {% block title %}Ingridients Page{% endblock %}
 
-{% block content %} 
-<div>
-    {{ name }}
-    {{ serving }}
+{% block content %}
+<div class="ingredient">
+    <h3 class="fixed">合計金額 : <strong class="estimation"></strong></h3>
+    <h2>{{ name }}</h2>
+    <h4>{{ serving }}</h4>
     {% regroup fetch_data by product_name as result_list %}
     <ul>
         {% for product_name in result_list %}
-            <li> {{ product_name.grouper }}: {{ product_name.list.0.product_amount }}</li>
-            <ul>
-                {% for result in product_name.list %}
-                <figure>
-                    <img src={{ result.img }}>
-                    <figcaption>
-                        <a href={{ result.url }}>{{ result.name }}</a>
-                        <p>{{ result.price }}円</p>
-                    </figcaption>
-                </figure>
-                {% endfor %}
+            <hr>
+            <aside>
+                <button class="controlDisplay">+</button>
+                <li> {{ product_name.grouper }}: {{ product_name.list.0.product_amount }}</li>
+            </aside>
+            <section class="hide">
+                <blockquote class="menu_containter">
+                    <button class="hamburger">ソート ▽</button>
+                    <nav class="menu">
+                        <button class="priceUp">値段↑</button>
+                        <button class="priceDown">値段↓</button>
+                        <button class="starUp">評価↑</button>
+                        <button class="starDown">評価↓</button>
+                    </nav>
+                </blockquote>
+                <section>
+                    {% for result in product_name.list %}
+                    <figure>
+                        <img src={{ result.mediumImg }}>
+                        <figcaption>
+                            <a href={{ result.url }}>{{ result.name }}</a>
+                            <aside>
+                                <p class="price">{{ result.price }}円</p>
+                                <p class="star">☆{{ result.score }}</p>
+                            </aside>
+                        </figcaption>
+                        <button class="checkbox"></button>
+                    </figure>
+                    {% endfor %}
+                </section>
             </section>
         {% endfor %}
         <hr>
     </ul>
 </div>
+<script>
+    $('.controlDisplay').click((e)=>{
+        if($(e.target).text() == "+"){
+            $(e.target).text("-");
+            $(e.target).parent().next().css("display", "flex")
+        }else{
+            $(e.target).text("+");
+            $(e.target).parent().next().css("display", "none")
+        }
+    })
+
+    $('.hamburger').on('click', function(e){
+        $('.menu').slideToggle();
+        let triangle = $(e.target).text().slice(-1);
+        if(triangle == "▽"){
+            $(e.target).text("ソート △");
+        }else{
+            $(e.target).text("ソート ▽");
+        }
+    });
+
+    $('.priceUp').click((e)=>{
+        let priceTag = $(e.target.parentElement.parentElement.parentElement).find('.price');
+        let section = $(e.target.parentElement.parentElement).next();
+        let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
+        for(let i = 0; i < 10; i++){
+            let price = priceTag.eq(i).text().slice(0, -1);
+            figureTags.eq(i).removeClass();
+            figureTags.eq(i).addClass(price);
+        }
+        figureTags.sort(function(a,b){
+            var figureA = parseInt($(a).attr('class').match(/\d+/));
+            var figureB = parseInt($(b).attr('class').match(/\d+/));
+            return figureA - figureB;
+        })
+        section.html(figureTags);
+    })
+    
+    $('.priceDown').click((e)=>{
+        let priceTag = $(e.target.parentElement.parentElement.parentElement).find('.price');
+        let section = $(e.target.parentElement.parentElement).next();
+        let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
+        for(let i = 0; i < 10; i++){
+            let price = priceTag.eq(i).text().slice(0, -1);
+            figureTags.eq(i).removeClass();
+            figureTags.eq(i).addClass(price);
+        }
+        figureTags.sort(function(a,b){
+            var figureA = parseInt($(a).attr('class').match(/\d+/));
+            var figureB = parseInt($(b).attr('class').match(/\d+/));
+            return figureB - figureA;
+        })
+        section.html(figureTags);
+    })
+    
+    $('.starUp').click((e)=>{
+        let starTag = $(e.target.parentElement.parentElement.parentElement).find('.star');
+        let section = $(e.target.parentElement.parentElement).next();
+        let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
+        for(let i = 0; i < 10; i++){
+            let star = starTag.eq(i).text().slice(1);
+            figureTags.eq(i).removeClass();
+            figureTags.eq(i).addClass(star);
+        }
+        figureTags.sort(function(a,b){
+            var figureA = $(a).attr('class');
+            var figureB = $(b).attr('class');
+            return figureA - figureB;
+        })
+        section.html(figureTags);
+    })
+
+    $('.starDown').click((e)=>{
+        let starTag = $(e.target.parentElement.parentElement.parentElement).find('.star');
+        let section = $(e.target.parentElement.parentElement).next();
+        let figureTags = $(e.target.parentElement.parentElement.parentElement).find('figure');
+        for(let i = 0; i < 10; i++){
+            let star = starTag.eq(i).text().slice(1);
+            figureTags.eq(i).removeClass();
+            figureTags.eq(i).addClass(star);
+        }
+        figureTags.sort(function(a,b){
+            var figureA = $(a).attr('class');
+            var figureB = $(b).attr('class');
+            return figureB - figureA;
+        })
+        section.html(figureTags);
+    })
+    let totalPrice = 0;
+    $(".estimation").text(totalPrice);
+    $('.checkbox').click((e)=>{
+        $(e.target).toggleClass('selected');
+        let price = Number($(e.target).parent().find('.price').text().slice(0, -1));
+        if($(e.target).attr("class") == "checkbox selected"){
+            totalPrice += price;
+        }else if($(e.target).attr("class") == "checkbox"){
+            totalPrice -= price;
+        }
+        $(".estimation").text(totalPrice);
+    })
+</script>
 {% endblock %}
