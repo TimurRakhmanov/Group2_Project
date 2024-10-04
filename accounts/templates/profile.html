@@ -18,9 +18,8 @@
         </aside>
     </section>
     <a href="{% url 'accounts:update' user.id %}">Update Profile</a>
-    <div>
-        <a href="{% url 'accounts:logout' %}">Logout</a>
-        <a href="{% url 'accounts:delete' user.id %}">Delete Account</a>
-    </div>
+    <a href="{% url 'accounts:logout' %}">Logout</a>
+    <a href="{% url 'accounts:delete' user.id %}">Delete Account</a>
+    <a href="{% url 'recipe_int:main' %}">Recipe Search</a>
 </div>
 {% endblock %}
