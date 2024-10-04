@@ -8,12 +8,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 a {
   text-decoration: none;
 }
@@ -26,6 +20,11 @@ li {
   header {
     color: rgb(191, 0, 0);
     padding: 5%;
+  }
+  footer {
+    color: rgb(191, 0, 0);
+    padding-top: 10vh;
+    text-align: center;
   }
 }
 @media (min-width: 300px) {
@@ -46,6 +45,11 @@ li {
     align-items: center;
     row-gap: 1.5vh;
     padding-top: 5vh;
+  }
+  .control > form > div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
   .control > form input {
     border: none;
@@ -153,6 +157,11 @@ li {
     align-items: center;
     row-gap: 1.5vh;
     padding-top: 5vh;
+  }
+  .search-bar > form > div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
   .search-bar > form input {
     border: none;
@@ -383,6 +392,42 @@ li {
 }
 @media (min-width: 1000px) {
   .ingredient {
-    width: 60%;
+    width: 80%;
+    padding-left: 10%;
+  }
+  .ingredient > .fixed {
+    padding: 1%;
+    font-size: 20px;
+  }
+  .ingredient > h2 {
+    font-size: 28px;
+  }
+  .ingredient > h4 {
+    font-size: 24px;
+  }
+  .ingredient > ul {
+    width: 85%;
+  }
+  .ingredient > ul > aside {
+    -moz-column-gap: 2vh;
+         column-gap: 2vh;
+    font-size: 20px;
+  }
+  .ingredient > ul .controlDisplay {
+    font-size: 28px;
+  }
+  .ingredient > ul li {
+    display: flex;
+    align-items: center;
+    height: 4vh;
+  }
+  .ingredient > ul > section > section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 2vh;
+  }
+  .ingredient > ul figure {
+    width: 30%;
   }
 }
