@@ -17,6 +17,7 @@ def get_api_response(item_name, recipe_id, save=False):
         "appointDeliveryDateFlag": 1,
         "elements": "smallImageUrls,mediumImageUrls,itemName,itemPrice,itemUrl,reviewAverage"
     }   
+    # Comment the lines used for profiling the requests
     # for i in range(10):
         # t1 = time.time()
     result = requests.get(request_url, params=params)
@@ -30,11 +31,13 @@ def get_api_response(item_name, recipe_id, save=False):
         #         f.writelines(f"{i}, {item_name}, {delta}\n")
         # time.sleep(3)
     result = result.json()
+    # Save if there is no cache
     if save:
         try:
             with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
                 json.dump(result, f)
         except FileNotFoundError:
+            # Create the appropriate directory to store the cache data
             print("Creating the folder for local cache...")
             os.mkdir(f"./recipe_integration/static/samples/api_responses/{recipe_id}/")
             with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="w") as f:
@@ -43,14 +46,15 @@ def get_api_response(item_name, recipe_id, save=False):
 
 
 def get_saved_api_response(recipe_id, item_name):
+    # This function is used to retrieve the data from cache
     with open(os.path.join(f"./recipe_integration/static/samples/api_responses/{recipe_id}/", f"{item_name}.json"), mode="r") as f:
         data = json.loads(f.read())
     return data
 
 
 def get_ingredients(recipe_id):
+    # Get the ingredients from the sample data
     with open(os.path.join(f".{os.path.sep}recipe_integration{os.path.sep}static{os.path.sep}samples{os.path.sep}recipes{os.path.sep}", f"{recipe_id}.json"), mode="r", encoding="utf-8_sig") as f:
-
         json_data = f.read()
     data = json.loads(json_data)
     return data["Name"], data["Servings"], data["Ingredients"], data["Amount"]
@@ -64,12 +68,14 @@ def get_result(item_name, item_amount, recipe_id, local_cache=False):
         except BaseException as e:
             print(e)
             print("No local cache found... Getting the data from API...")
+            # Sleep to prevent the connection disconnect from the API source
             time.sleep(3)
             data = get_api_response(item_name=item_name, recipe_id=recipe_id, save=True)
     else:
         data = get_api_response(item_name=item_name, recipe_id=recipe_id, save=False)
     items = data["Items"]
     main_info = []
+    # Show only the 10 itimes
     for item in items[:10]:
         main_info.append(
             {
